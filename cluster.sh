@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it redis6379 redis-cli --cluster-replicas 1  --cluster create 172.18.0.2:6379 172.18.0.3:6380 172.18.0.4:6381 172.18.0.5:6382 172.18.0.6:6383 172.18.0.7:6384 
+docker exec -it redis6379 redis-cli --cluster-replicas 1  --cluster create 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 

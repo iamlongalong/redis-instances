@@ -30,6 +30,9 @@ redis-cli -c cluster nodes
 ```
 
 
+由于 mac 上无法直接访问 containerIP , 也无法使用 host network，可以参考 https://github.com/docker/for-mac/issues/2670 ， 所以在 mac 上很难搞啊。
+
+
 ## TODO
 既然做了 redis-cluster 的本地集群组建，那么回头再增加一些其他类型的资源组建，为他人学习、测试等提供便利。
 - [ ] redis-sentinel 组建
