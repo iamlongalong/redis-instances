@@ -29,8 +29,25 @@ redis-cli -c cluster nodes
 9. appendonly yes   # 开启 aof 模式
 ```
 
+## docker 网络
+docker 网络有几种模式，默认的是 bridge 模式，这种模式下，所有容器网络均由 docker0 这个网桥分配，容器相互访问可以通过 docker0 网桥转发。 一种是 host 网络，用的是主机网卡。 一种是 容器网络，可以多个容器共用一个网络空间，k8s 的 pause 容器就起这个作用。还有 overlay 网络、自定义网络(自定义的ip段等)。
+我们最常用的是 bridge 网络，但这样有个问题，ip 的变动会导致一些有状态服务出问题。 于是，其中一种解决方法是 `--link` 模式，类似于给一个网络空间下加入了 `服务名` ，可以解析到对应的 ip，但这种方式用起来比较麻烦。 另一种解决方案是 自定义网络，在指定了 subnet 之后，可以指定特定的 ip ，也可以指定 服务名，在存在多个服务时，是很常用的方式。
 
-由于 mac 上无法直接访问 containerIP , 也无法使用 host network，可以参考 https://github.com/docker/for-mac/issues/2670 ， 所以在 mac 上很难搞啊。
+在 redis-cluster 的场景中，我们有两个需求： ① 每个 redis 实例之间均可以通信  ② 外部能访问每个 redis 实例。 前者是为了组集群，后者是为了外部访问。
+这两个条件，有如下方案可行：
+1. 直接使用 host network，每个 redis 实例使用不同端口。
+2. 直接使用 bridge 网络，通过 ip 访问，为了保证 脚本的确定性，可以使用自定义网络，并且指定 ip。
+
+这两种方案在 linux 下均可。
+
+在 mac 上，由于实现方式的不同， mac 上无法直接访问 containerIP , 也无法使用 host network，可以参考 https://github.com/docker/for-mac/issues/2670 ， 所以在 mac 上就行不通了。
+为了直接使用主机网络，有四种方案可以尝试：
+1. 直接在宿主机上运行 redis 进程，并使用不同端口。
+2. 使用 `-p` 暴露端口，并配置 subnet 指定容器 ip 和宿主机相同(多个容器共用，或者封装特定的多redis进程的镜像)。
+3. 配置 ss 进行代理，对特定网段的网络请求转发到由 ss 代理的 docker 网络中。
+4. 修改 redis-cluster 的组集群 ip 获取，改由环境变量传入。
+
+这几种方式权衡下来，还是觉得直接在宿主机上运行 redis-cluster 的成本最低。
 
 
 ## TODO
@@ -40,3 +57,4 @@ redis-cli -c cluster nodes
 - [ ] k8s 下的 redis 搭建
 - [ ] k8s 下的 redis-cluster 搭建
 - [ ] 增加 redis 性能测试的实验
+

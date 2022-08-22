@@ -9,16 +9,16 @@ services:
     volumes:
       - ./config/6379/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6379:/data
-    ports:
-      - "6379:6379"
-      - "16379:16379"
+    # ports:
+    #   - "6379:6379"
+    #   - "16379:16379"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.2
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.2
     logging:
       options:
         max-size: '100m'
@@ -33,16 +33,16 @@ services:
     volumes:
       - ./config/6380/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6380:/data
-    ports:
-      - "6380:6380"
-      - "16380:16380"
+    # ports:
+    #   - "6380:6380"
+    #   - "16380:16380"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.3
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.3
     logging:
       options:
         max-size: '100m'
@@ -57,16 +57,16 @@ services:
     volumes:
       - ./config/6381/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6381:/data
-    ports:
-      - "6381:6381"
-      - "16381:16381"
+    # ports:
+    #   - "6381:6381"
+    #   - "16381:16381"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.4
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.4
     logging:
       options:
         max-size: '100m'
@@ -81,16 +81,16 @@ services:
     volumes:
       - ./config/6382/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6382:/data
-    ports:
-      - "6382:6382"
-      - "16382:16382"
+    # ports:
+    #   - "6382:6382"
+    #   - "16382:16382"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.5
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.5
     logging:
       options:
         max-size: '100m'
@@ -105,16 +105,16 @@ services:
     volumes:
       - ./config/6383/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6383:/data
-    ports:
-      - "6383:6383"
-      - "16383:16383"
+    # ports:
+    #   - "6383:6383"
+    #   - "16383:16383"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.6
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.6
     logging:
       options:
         max-size: '100m'
@@ -129,16 +129,16 @@ services:
     volumes:
       - ./config/6384/redis.conf:/usr/local/etc/redis/redis.conf
       - ./data/6384:/data
-    ports:
-      - "6384:6384"
-      - "16384:16384"
+    # ports:
+    #   - "6384:6384"
+    #   - "16384:16384"
     environment:
       - TZ=Asia/Shanghai
       - TAKE_FILE_OWNERSHIP=true
-    # network_mode: host
-    networks:
-      longredis:
-        ipv4_address: 172.18.0.7
+    network_mode: host
+    # networks:
+    #   longredis:
+        # ipv4_address: 172.18.0.7
     logging:
       options:
         max-size: '100m'
@@ -148,8 +148,8 @@ networks:
 #   hostnet:
 #     external:
 #       name: host
-  longredis:
-    ipam:
-      driver: default
-      config:
-        - subnet: "172.18.0.0/24"
+  # longredis:
+  #   ipam:
+  #     driver: default
+  #     config:
+  #       - subnet: "172.18.0.0/24"
