@@ -1,0 +1,143 @@
+version: '3.7'
+services:
+  redis6379:
+    image: redis:6.0
+    container_name: redis6379
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6379/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6379:/data
+    ports:
+      - "6379:6379"
+      - "16379:16379"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.2
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+ 
+  redis6380:
+    image: redis:6.0
+    container_name: redis6380
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6380/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6380:/data
+    ports:
+      - "6380:6380"
+      - "16380:16380"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.3
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+ 
+  redis6381:
+    image: redis:6.0
+    container_name: redis6381
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6381/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6381:/data
+    ports:
+      - "6381:6381"
+      - "16381:16381"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.4
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+ 
+  redis6382:
+    image: redis:6.0
+    container_name: redis6382
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6382/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6382:/data
+    ports:
+      - "6382:6382"
+      - "16382:16382"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.5
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+ 
+  redis6383:
+    image: redis:6.0
+    container_name: redis6383
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6383/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6383:/data
+    ports:
+      - "6383:6383"
+      - "16383:16383"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.6
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+ 
+  redis6384:
+    image: redis:6.0
+    container_name: redis6384
+    restart: always
+    command:
+      ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./config/6384/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/6384:/data
+    ports:
+      - "6384:6384"
+      - "16384:16384"
+    environment:
+      - TZ=Asia/Shanghai
+      - TAKE_FILE_OWNERSHIP=true
+    networks:
+      longredis:
+        ipv4_address: 172.18.0.7
+    logging:
+      options:
+        max-size: '100m'
+        max-file: '10'
+        
+networks:
+  longredis:
+    external: true
