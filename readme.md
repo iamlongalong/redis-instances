@@ -1,5 +1,9 @@
 ## 说明
 
+当我想要在本地用 redis cluster 做测试时，自然而然想到起个 docker ，但在 mac 上，这却非常难搞。
+
+一番各种尝试之后，对其中的恶心深恶痛绝，遂希望建个小工具库，一来自己可以快速启动测试环境，二来也可以帮助遇到同样问题的码友们不遭受此罪，能把精力放到真正有价值的事上。
+
 这是为了本地测试 redis cluster 而使用 docker-compose 启动的 6 节点 redis cluster。
 
 使用方式：
@@ -52,9 +56,8 @@ docker 网络有几种模式，默认的是 bridge 模式，这种模式下，�
 
 ## TODO
 既然做了 redis-cluster 的本地集群组建，那么回头再增加一些其他类型的资源组建，为他人学习、测试等提供便利。
-- [ ] redis-sentinel 组建
-- [ ] redis 主从组建 
-- [ ] k8s 下的 redis 搭建
-- [ ] k8s 下的 redis-cluster 搭建
+- [x] redis 主从组建 
+- [x] k8s 下的 redis 搭建
+- [x] k8s 下的 redis-cluster 搭建
 - [ ] 增加 redis 性能测试的实验
-
+- [ ] redis 使用上的一些事儿
